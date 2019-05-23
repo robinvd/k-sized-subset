@@ -8,8 +8,6 @@ pub fn f(s: usize, k: usize, n: usize) -> Vec<usize> {
 
     let half = binomial(s - 1, k - 1);
     if n < half {
-        // print!("<");
-
         let mut res = f(s - 1, k - 1, n);
 
         for x in res.iter_mut() {
@@ -28,6 +26,17 @@ pub fn f(s: usize, k: usize, n: usize) -> Vec<usize> {
     }
 }
 
+/// A function to find the nth k-sized subset of the superset of [0..s].
+///
+/// ```text
+/// the k-sized subsets of a set is the subsets of size k of the set's powerset.
+/// For instance, the 2-sized subsets of [1,2,3] are [1,2], [1,3], and [2,3] (in
+/// that particular order).
+/// ```
+///
+/// Time complexity is O(s) if the binomial function is O(1).
+///
+/// Original author: Robin van Dijk (robin@robinjint.nl).
 pub fn f_iter(mut s: usize, mut k: usize, mut n: usize) -> Vec<usize> {
     let len = k;
     let mut res = vec![0; k];
